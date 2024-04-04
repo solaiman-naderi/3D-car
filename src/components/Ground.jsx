@@ -32,7 +32,7 @@ const Ground = () => {
         normalScale={[0.15, 0.15]}
         roughnessMap={roughness}
         dithering={true}
-        color={[0.015, 0.015, 0.015]}
+        color={[0, 0, 0]}
         roughness={0.7}
         blur={[1000, 400]}
         mixBlur={30}
