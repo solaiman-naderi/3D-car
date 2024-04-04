@@ -8,6 +8,14 @@ import {
 import Ground from "./Ground";
 import CarModel from "./CarModel";
 import Rings from "./Ring";
+import Boxes from "./Boxs";
+import {
+  Bloom,
+  DepthOfField,
+  EffectComposer,
+  Noise,
+  Vignette,
+} from "@react-three/postprocessing";
 
 const Car = () => {
   return (
@@ -17,6 +25,7 @@ const Car = () => {
       <color attach={"background"} args={[0, 0, 0]} />
 
       <Rings />
+      <Boxes />
       <spotLight
         color={[1, 0.25, 0.7]}
         intensity={100}
@@ -35,6 +44,23 @@ const Car = () => {
         shadow-bias={-0.0001}
       />
       <Ground />
+
+      <EffectComposer>
+        <DepthOfField
+          focusDistance={0}
+          focalLength={0.02}
+          bokehScale={2}
+          height={200}
+        />
+        <Bloom
+          luminanceThreshold={0}
+          kernelSize={1}
+          luminanceSmoothing={0.9}
+          height={300}
+        />
+        <Noise opacity={0.002} />
+        <Vignette eskil={false} offset={0.1} darkness={1.1} />
+      </EffectComposer>
 
       <CubeCamera resolution={256} frames={Infinity}>
         {(texture) => (

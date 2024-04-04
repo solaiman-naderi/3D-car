@@ -7,6 +7,7 @@ export default function CarModel() {
   const gltf = useGLTF("/model/car1/cyberpunk_car.glb");
   useEffect(() => {
     gltf.scene.traverse((object) => {
+      console.log(object);
       if (object instanceof Mesh) {
         object.castShadow = true;
         object.receiveShadow = true;
